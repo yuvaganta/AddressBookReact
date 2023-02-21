@@ -1,0 +1,28 @@
+#nameOfContact{
+    font-size: 30px;
+    padding-right: 100px;
+  }
+  .displayDetails{
+    margin-top: 80px;
+  }
+  #editimage{
+    height: 15px;
+  }
+  .viewbtns{
+    padding-right: 30px;
+    padding-left: 0px;
+    cursor: pointer;
+
+  }
+  #deleteimage{
+    position: relative;
+    bottom:-3px;
+  }
+  #editimage{
+    position: relative;
+    bottom:-3px;
+  }
+  #nameOfContact {
+    font-size: 30px;
+    padding-right: 100px;
+}

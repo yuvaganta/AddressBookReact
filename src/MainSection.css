@@ -1,0 +1,42 @@
+.contact {
+    list-style-type: none;
+}
+.contactul{
+    overflow-x: hidden; 
+    overflow-y: visible;
+    height: 500px;
+  }
+  .eachContact{
+    border: 1px groove rgb(128, 128, 128);
+    width: 400px;
+    height: 150px;
+    margin-left: 10px;
+    padding-left: 10px;
+    
+  }
+  h3{
+    margin-left: 10px;
+  }
+  .Name{
+    font-size:24px;
+    padding-bottom: 0;
+  }
+  .email{
+    padding-top: 0;
+  }
+  .eachContact:hover{
+    background-color: rgb(206,231,242);
+    cursor: pointer;
+  }
+  .activeContact{
+    background-color: rgb(206,231,242);
+  }
+  .MainSection{
+    display: flex;
+    gap: 120px;
+    font-family: Ebrima;
+    margin-bottom: 0px;
+    color:rgba(0,0,0,0.95);
+    position: absolute;
+    z-index: -2;
+  }
