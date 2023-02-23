@@ -4,19 +4,18 @@ import { IContact, IFormData, IStatesObj, IValidates } from "./Models";
 import './FormSection.css'
 import { ContactServices } from "./ContactServices";
 import { ValidateForm } from "./Validations";
+import { Link, useNavigate } from "react-router-dom";
 let validateForm:ValidateForm=new ValidateForm();
 let contactServices:ContactServices=new ContactServices();
 export function FormSection({setStatesObj, statesObj}:{setStatesObj:Function,statesObj:IStatesObj}){
+  const navigate=useNavigate()
 let contactUsed:IContact;
 contactUsed=contactServices.getContactById(statesObj.selectedContactId);
-console.log(contactUsed);
-console.log(statesObj.selectedContactId);
 const [formFields, setFormFields]=useState<IContact>({...contactUsed})
   useEffect(()=>{
     setFormFields({...contactUsed})
     setValidates({isNameValidate:false,isEmailValidate:false, isMobileValidate:false})
   },[statesObj])
-console.log(formFields)
 const [validates , setValidates]=useState<IValidates>({isNameValidate:false,
   isEmailValidate:false,
   isMobileValidate:false})
@@ -26,12 +25,17 @@ const [validates , setValidates]=useState<IValidates>({isNameValidate:false,
   }
   function cancelHandler(){
     if(statesObj.formAction=="add"){
-    setStatesObj({showForm:false,showDisplayDetails:false,selectedContactId:""});}
+    setStatesObj({showForm:false,showDisplayDetails:false,selectedContactId:""});
+    navigate("/");
+  }
     else{
-      setStatesObj({showForm:false,showDisplayDetails:true});
+      setStatesObj({showForm:false,showDisplayDetails:true,selectedContactId:contactUsed.id});
+      navigate("/details/"+statesObj.selectedContactId);
     }
     setValidates({isNameValidate:false,isEmailValidate:false,isMobileValidate:false});
   }
+
+
   function submitHandler(e:any){
     e.preventDefault();
     let isName:boolean,isEmail:boolean,isMobile:boolean;
@@ -41,9 +45,10 @@ const [validates , setValidates]=useState<IValidates>({isNameValidate:false,
     if(!isEmail&&!isMobile&&!isName){
     if(statesObj.formAction=="add"){
       let newContact:IContact;
-    newContact={id:Guid.create().toString(),name:formFields.name,email:formFields.email,mobile:formFields.mobile,address:formFields.address,website:formFields.website,landline:formFields.landline}
-    contactServices.AddContact(newContact)
-    setStatesObj({...statesObj,showForm:false,showDisplayDetails:true,selectedContactId:newContact.id});
+     newContact={id:Guid.create().toString(),name:formFields.name,email:formFields.email,mobile:formFields.mobile,address:formFields.address,website:formFields.website,landline:formFields.landline}
+     contactServices.AddContact(newContact)
+     setStatesObj({...statesObj,showForm:false,showDisplayDetails:true,selectedContactId:newContact.id});
+     navigate("/details/"+statesObj.selectedContactId);
     }
     else{
       if ( window.confirm("Are you sure you want to edit " +contactUsed.name +"'s details")){
@@ -53,9 +58,11 @@ const [validates , setValidates]=useState<IValidates>({isNameValidate:false,
       let varForm:IFormData={action:"",name:"",id:"",mobile:"",address:"",email:"",website:"",landline:""}
       setFormFields(varForm)
       setStatesObj({...statesObj,showForm:false,showDisplayDetails:true,selectedContactId:newContact.id});
+      navigate("/details/"+statesObj.selectedContactId);
     }
     else {
       setStatesObj({...statesObj,showForm:false,showDisplayDetails:true});
+      navigate("/details/"+statesObj.selectedContactId);
     }
   }
   }
@@ -70,7 +77,7 @@ return(
           <div>
     <input type="text" id="addName" className="inbox" name="name" value={formFields.name} onChange={handleChange}/></div>
           { validates.isNameValidate && <div className="warnings" id="nameWarning">Enter your name</div>}
-          <div><label>Email</label></div>
+          <div><label>Email</label><span className="star">*</span></div>
           <div>
     <input type="text" id="addEmail" className="inbox" name="email" value={formFields.email} onChange={handleChange}/></div>
     { validates.isEmailValidate && <div className="warnings" id="emailWarning"> Enter Valid Email Id</div>}
@@ -98,7 +105,7 @@ return(
     <textarea id="addAddress" name="address" value={formFields.address} onChange={handleChange}></textarea></div>
           <div className="buttondiv">
            {statesObj.formAction=="add" && <button className="formbutton" id="addButton" type="submit" >Add</button>}
-           {statesObj.formAction=="edit" && <button className="formbutton" id="editButton" type="submit" >Edit</button>}
+           {statesObj.formAction=="edit" &&<button className="formbutton" id="editButton"type="submit"  >Edit</button>}
             <button id="cancelButton" onClick={cancelHandler}>Cancel</button>
           </div>
         </form>

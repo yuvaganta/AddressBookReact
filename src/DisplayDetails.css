@@ -1,28 +1,32 @@
 #nameOfContact{
-    font-size: 30px;
-    padding-right: 100px;
+    /* color: rgb(83,83,83); */
+    font-weight: normal;
+color: black;
+    font-size: 32px;
+  }
+  .detailsSection{
+    display: flex;
+    gap:60px;
+  }
+  .editAndDeleteIcons{
+    display: flex;
+    gap:50px;
+    margin-top: 32px;
   }
   .displayDetails{
-    margin-top: 80px;
+    margin: 20px 90px;
+    /* color: rgb(83,83,83); */
+    font-size: 17px;
   }
   #editimage{
     height: 15px;
+    margin-top:8px;
+    padding-right: 3px;
+  }#deleteimage{
+    height: 20px;
+    margin-top:5px;
+    padding-right: 3px;
   }
   .viewbtns{
-    padding-right: 30px;
-    padding-left: 0px;
     cursor: pointer;
-
   }
-  #deleteimage{
-    position: relative;
-    bottom:-3px;
-  }
-  #editimage{
-    position: relative;
-    bottom:-3px;
-  }
-  #nameOfContact {
-    font-size: 30px;
-    padding-right: 100px;
-}

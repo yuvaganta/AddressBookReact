@@ -7,22 +7,36 @@
     height: 500px;
   }
   .eachContact{
-    border: 1px groove rgb(128, 128, 128);
-    width: 400px;
-    height: 150px;
+    border: 0.5px solid gray;
+    width: 420px;
+    height: 95px;
     margin-left: 10px;
-    padding-left: 10px;
-    
+    padding:5px 10px;
+    color: rgb(83,83,83);
+    font-weight: normal;
   }
+  .contact{padding-left: 27px;}
   h3{
     margin-left: 10px;
+    padding-left: 27px;
+    margin-top: 25px;
+    margin-bottom: auto;
   }
   .Name{
-    font-size:24px;
-    padding-bottom: 0;
+    font-size:32px;
+    font-weight: normal;
+    margin: 0;
+  }
+  .linktag{
+    text-decoration: none;
   }
   .email{
-    padding-top: 0;
+    font-size: 16px;
+    margin: 0;
+  }
+  .mobile{
+    font-size: 16px;
+    margin: 0;
   }
   .eachContact:hover{
     background-color: rgb(206,231,242);
@@ -33,10 +47,7 @@
   }
   .MainSection{
     display: flex;
-    gap: 120px;
-    font-family: Ebrima;
-    margin-bottom: 0px;
+    gap: 20px;
     color:rgba(0,0,0,0.95);
-    position: absolute;
-    z-index: -2;
+    
   }

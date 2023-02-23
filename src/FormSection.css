@@ -1,58 +1,66 @@
 #addMobile,#addLandline{
-    width:332px;
-    height: 25px;
-    
+    width:282px;
+    height: 35px;
+    margin-top: 10px;
+    font-size: 16px;
+    margin-bottom: 10px;  
   }
   #addLandline{
     margin-left: 14px;
   }
   #mobilelabel{
-    padding-right: 292px;
+    padding-right: 244px;
   }
   textarea{
-    width:690px;
-    height: 50px;
+    width:585px;
+    font-size: 16px;
+    height: 70px; 
+    margin-top: 10px;
+    margin-bottom: 10px;
   }
   .addingDetails{
-    background-color: white;
-    margin-top: 76px;
-    position: absolute;
-    left: 124%;
+    margin-top: 45px;
   }
   #addingDetailsForm{
     border: 2px solid gray;
-    width: 700px;
-    padding: 80px ;
-    padding-top: 50px;
-    padding-bottom: 28px;
+    width: 610px;
+    padding: 30px ;
+    padding-top: 20px;
+    padding-bottom: 20px;
     font-weight: bold;
+    box-shadow: 0px 0px 25px;
+    margin-left: 20px;
+    margin-top: -20px;
   }
   .formbutton{
-    background-color: rgb(51,153,204);
+    background-color: green;
     color: White;
-    border: 2px solid rgb(51,153,204);
-    margin-left: 536px;
+    border: 2px solid green;
+    margin-left: 428px;
     width: 70px;
-    height: 25px;
+    height: 40px;
+    font-size: 18px;
     margin-top:5px;
     cursor: pointer;
 
   }
+  .star{
+    color: red;
+  }
   #cancelButton{
-    background-color: rgb(51,153,204);
+    background-color: green;
     color: White;
-    border: 2px solid rgb(51,153,204);
+    border: 2px solid green;
     margin-top:5px;
     cursor: pointer;
     width: 70px;
-    height: 25px;
+    font-size: 18px;
+    height: 40px;
   }
-  .subheads{
-    font-weight: bold;
-  }
+  
   .buttondiv{
     display: flex;
-    gap:20px;
+    gap:22px;
   }
   .warnings{
     color:red;
@@ -61,5 +69,9 @@
     font-weight: light;
   }
   .inbox {
-    width: 690px;
-    height: 25px;}
+    width: 585px;
+    height: 35px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 16px;
+  }

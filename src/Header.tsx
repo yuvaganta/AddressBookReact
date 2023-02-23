@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import "./Header.css"
 import { images } from './images';
 import {  IStatesObj } from './Models';
 export function HeaderComponent({statesObj,setStatesObj}:{statesObj:IStatesObj,setStatesObj:Function}){
   function setShowForm() {
-    console.log("add clicked")
     setStatesObj({showForm:true,showDisplayDetails:false,selectedContactId:"",formAction:"add"});
   }
 
@@ -15,7 +15,7 @@ export function HeaderComponent({statesObj,setStatesObj}:{statesObj:IStatesObj,s
             <div className="navlinks">
               <div className="navigationitem">HOME</div>
               <div className="navigationitem">
-                <a href="#" id="addlink" onClick={()=>setShowForm()}>+ADD</a>
+                <Link id="addlink" to="/form" onClick={()=>setShowForm()}>+ADD</Link>
               </div>
             </div>
             <div className="blogimage"><img src={images.blogIcon} /></div>

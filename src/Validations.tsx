@@ -20,7 +20,7 @@ ValidateEmail(tempEmail:string){
         }
 }}
 ValidateMobile(tempMobile:string){
-    if (tempMobile == "" || tempMobile.length != 10) {
+    if (tempMobile == "" || tempMobile.length != 14) {
         return true
       } 
     else {
