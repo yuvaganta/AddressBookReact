@@ -1,9 +1,9 @@
-import React, { useState } from "react";
-import { IContact, IFormData, IStatesObj } from "./Models";
-import { images } from "./images";
+import React, { useEffect, useState } from "react";
+import { images } from "../../images";
 import "./DisplayDetails.css";
-import { ContactServices } from "./ContactServices";
-import { Link, useNavigate } from "react-router-dom";
+import { ContactServices } from "../../Services/ContactServices";
+import { Link, useNavigate, useParams } from "react-router-dom";
+import { IContact, IFormData, IStatesObj } from "../../Models/Models";
 let contactServices: ContactServices = new ContactServices();
 export function DisplayDetails({
   setStatesObj,
@@ -12,12 +12,10 @@ export function DisplayDetails({
   setStatesObj: Function;
   statesObj: IStatesObj;
 }) {
-  const navigate=useNavigate()
+  const navigate = useNavigate();
   let contact: IContact;
   contact = contactServices.getContactById(statesObj.selectedContactId);
   function editHandler() {
-    let varForm: IFormData;
-    // varForm={...statesObj.selectedContact,action:"edit"}
     setStatesObj({
       ...statesObj,
       formAction: "edit",
@@ -26,17 +24,26 @@ export function DisplayDetails({
     });
   }
   function deleteHandler() {
-    if (window.confirm("Are you sure you want to delete " + contact.name + "'s details")) {
+    if (
+      window.confirm(
+        "Are you sure you want to delete " + contact.name + "'s details"
+      )
+    ) {
       contactServices.DeleteContact(statesObj.selectedContactId);
       setStatesObj({
         ...statesObj,
         showForm: false,
         showDisplayDetails: false,
       });
-      navigate("/")
+      navigate("/");
     } else
       setStatesObj({ ...statesObj, showForm: false, showDisplayDetails: true });
   }
+  const { id } = useParams();
+  useEffect(() => {
+    setStatesObj({ ...statesObj, selectedContactId: id });
+    console.log(statesObj.selectedContactId);
+  }, [id]);
   return (
     <div className="displayDetails">
       <div className="detailsSection">
@@ -47,7 +54,12 @@ export function DisplayDetails({
           {" "}
           <div>
             <img id="editimage" src={images.editIcon} />
-            <Link className="viewbtns" id="editlink" onClick={editHandler} to={"../form/"+contact.id}>
+            <Link
+              className="viewbtns"
+              id="editlink"
+              onClick={editHandler}
+              to={"/form/" + contact.id}
+            >
               EDIT
             </Link>
           </div>
